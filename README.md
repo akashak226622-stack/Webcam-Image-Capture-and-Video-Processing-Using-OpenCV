@@ -43,14 +43,79 @@ Resize the frame and rotate it using OpenCV functions, then display the processe
 ## 💻 Program
 
 ### Developed By:
-**Name:** ____________________________  
+**Name:SACHIN M** 
 
-### Register No:
-____________________________  
+### Register No: 212223040177
+```
+import cv2
+import matplotlib.pyplot as plt
+from IPython.display import clear_output
+import time
+cap = cv2.VideoCapture(0)
+ret, frame = cap.read()
+if ret:
+    cv2.imwrite("webcam_image.jpg", frame)
+cap.release()
+import cv2
+import matplotlib.pyplot as plt
+captured_image = cv2.imread("webcam_image.jpg")
+plt.imshow(captured_image[:,:,::-1])
+plt.title('Captured Frame')
+plt.axis('off')
+plt.show()
+import time
+from IPython.display import clear_output
 
----
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+
+    if not ret:
+        break
+
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+
+    time.sleep(0.05)
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    resized_frame = cv2.resize(frame, (100, 150))  # Resize to 320x240
+    frame_rgb = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+    frame_rgb = cv2.cvtColor(rotated_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
+```
 
 ## Output
+<img width="765" height="427" alt="image" src="https://github.com/user-attachments/assets/5a87eaff-c490-43d6-95fa-310f015d243c" />
 
 ### i) Write the frame as JPG image
 Captured image is saved as `captured_image.jpg`
